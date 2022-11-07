@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.jacaranda.models.Conn;
 import com.jacaranda.models.LoginUtils;
 
 /**
@@ -40,17 +42,25 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
 		String name = request.getParameter("user");
 		String pass = request.getParameter("password");
-		
-		if(LoginUtils.validate(name, pass)) {
-			RequestDispatcher rd = request.getRequestDispatcher("construction.jsp");
-			rd.forward(request, response);
+		if(name !=null && pass !=null){
+
+			if(LoginUtils.validate(name, pass)) {
+				HttpSession userSession = request.getSession();
+				userSession.setAttribute("login", "True");
+				userSession.setAttribute("usuario", name);
+	    		RequestDispatcher rd = request.getRequestDispatcher("construction.jsp");
+	    		rd.forward(request, response);
+			}else {
+				response.sendRedirect("index.jsp?msg_error=true");
+			}
 		}else {
-			out.print("Sorry username or pass error");
+			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp?msg_error=true");
 			rd.include(request, response);
 		}

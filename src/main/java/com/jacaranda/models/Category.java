@@ -1,10 +1,14 @@
 package com.jacaranda.models;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,10 +16,12 @@ import javax.persistence.Table;
 public class Category {
 	
 	@Id
+	@Column(name="id")
 	private int code;
 	private String name;
 	private String description;
-	private ArrayList<Material> materialList;
+	@OneToMany(mappedBy="category", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Material> materialList;
 	
 	public Category() {
 		
@@ -36,7 +42,7 @@ public class Category {
 	public String getDescription() {
 		return description;
 	}
-	public ArrayList<Material> getMaterialList() {
+	public List<Material> getMaterialList() {
 		return materialList;
 	}
 	public void setCode(int code) {
@@ -48,7 +54,7 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public void setMaterialList(ArrayList<Material> materialList) {
+	public void setMaterialList(List<Material> materialList) {
 		this.materialList = materialList;
 	}
 	@Override
