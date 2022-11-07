@@ -11,15 +11,24 @@
                      
          <div id="centroLogin">
      
-         	<form action="checkLogin.jsp"  method="post">
+         	<form action="/Login"  method="post">
             	<h1 id="titulo">Bienvenido</h1>
+            	<%
+				//Se comprueba si existe la variable error que vendría true del checkLogin si algun campo fuese incorrecto
+				String messageLog = request.getParameter("msg_error");
+				if(messageLog!=null){
+				%>
+					<div>
+						<span>El usuario o la contraseña son incorrectos</span>
+					</div>
+				<%}%>
 					
-		<!--Formulario de login que enviarÃ¡ la informaciÃ³n a checkLogin.jsp y harÃ¡ las comprobaciones-->
+		<!--Formulario de login que enviará la información a checkLogin.jsp y hará las comprobaciones-->
 		
-	            	<p id="textoUser">Usuario:
+	            	<p class="textoUser">Usuario:
 	                	<input type="text" required name="user" id="user">
 	                </p>
-	                <p id="textoContrasena">ContraseÃ±a: 
+	                <p class="textoContrasena">Contraseña: 
 	                	<input type="password" required name="password" id="password">
 	                </p>
                     <p><input type="submit" id="Enviar" value="Enviar"></p>
