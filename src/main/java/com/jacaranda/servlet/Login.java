@@ -65,19 +65,13 @@ public class Login extends HttpServlet {
 							+ "<html>"
 							+ "<head>"
 	    					+ "<meta charset=\"UTF-8\">"
-	    					+ "<title>Peliculas</title>"
-	    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/styleTablePage.css\">"
+	    					+ "<title>Materiales</title>"
 	    					+ "</head>"
-	    					+ "<body background=\"images/fondo2.jpg\">");
+	    					+ "<body>");
 					
 					List<Material> listMaterial = null;
-					
-					try {
-						listMaterial = CRUDMaterial.getMaterials();
-					} catch (Exception e) {
-						response.sendRedirect("index.jsp?msg_error=true");					
-					}
-					
+					listMaterial = CRUDMaterial.getMaterials();
+				
 					out.println("<div>"
 	    					+ "<table>"
 	    					+ "<tr>"
@@ -124,7 +118,7 @@ public class Login extends HttpServlet {
 		}
 		
 		
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

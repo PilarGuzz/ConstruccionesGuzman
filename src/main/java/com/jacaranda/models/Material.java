@@ -1,5 +1,7 @@
 package com.jacaranda.models;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="material")
+@Entity(name="material")
 public class Material {
 	
 	@Id 
@@ -21,7 +22,7 @@ public class Material {
 	private String description;
 	private double price;
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="category")
 	private Category category;
 	
 	public Material() {
@@ -63,6 +64,23 @@ public class Material {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(category, code, description, name, price);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Material other = (Material) obj;
+		return Objects.equals(category, other.category) && code == other.code
+				&& Objects.equals(description, other.description) && Objects.equals(name, other.name)
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
 	}
 
 }
