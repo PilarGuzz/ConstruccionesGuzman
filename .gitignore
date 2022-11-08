@@ -26,7 +26,8 @@ atlassian-ide-plugin.xml
 *.*xml~
 
 # Eclipse specific files/directories
-
+.classpath
+.project
 .factorypath
 .settings
 .externalToolBuilders
