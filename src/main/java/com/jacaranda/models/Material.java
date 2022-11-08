@@ -2,6 +2,8 @@ package com.jacaranda.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 public class Material {
 	
 	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int code;
 	private String name;
@@ -24,9 +27,8 @@ public class Material {
 	public Material() {
 		
 	}
-	public Material(int code, String name, String description, double price, Category categoryName) {
-		super();
-		this.code = code;
+	public Material(String name, String description, double price, Category categoryName) {
+		
 		this.name = name;
 		this.description = description;
 		this.price = price;
