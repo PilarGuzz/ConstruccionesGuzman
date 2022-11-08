@@ -34,6 +34,7 @@
                     <p><input type="submit" id="Enviar" value="Enviar"></p>
           	</form>
        	</div>
+       	<div> <a href='SignUp.jsp'><button id='SignUp'>Sign Up</button></a> </div>
    	</div>
 
 

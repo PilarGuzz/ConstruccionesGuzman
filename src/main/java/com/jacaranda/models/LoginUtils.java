@@ -47,6 +47,22 @@ public class LoginUtils {
 		
 		return valid;
 	}
+	
+	public static boolean saveUser( User user) {
+		boolean resultado=false;
+		Session session = Conn.getSession();
+		
+		try {
+			session.getTransaction().begin();
+			session.saveOrUpdate(user);
+			session.getTransaction().commit();
+			resultado=true;			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
 		
 		
 	 //Cerrar sesion. Limpia parametros  y atributos de la session actual.

@@ -2,7 +2,6 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -67,12 +66,8 @@ public class Login extends HttpServlet {
 	    					+ "<meta charset=\"UTF-8\">"
 	    					+ "<title>Materiales</title>"
 	    					+ "</head>"
-	    					+ "<body>");
-					
-					List<Material> listMaterial = null;
-					listMaterial = CRUDMaterial.getMaterials();
-				
-					out.println("<div>"
+	    					+ "<body>"
+							+ "<div>"
 	    					+ "<table>"
 	    					+ "<tr>"
 	    					+ "<th>Codigo</th>"
@@ -82,28 +77,26 @@ public class Login extends HttpServlet {
 	    					+ "<th>CategoryCode</th>"
 	    					+ "</tr>");
 					
-					Iterator<Material> iterator = listMaterial.iterator();
-	    			while(iterator.hasNext()) { 
-	    				//Itera cada linea de nuestra base datos y nos la muestra en la tabla correspondiente.
-	    				
-	    				Material material = new Material();
-	    				material=iterator.next();
-	    					Integer id = material.getCode();
-	    					
-	    					out.println("<tr>"
-	    							+ "<td>"+material.getCode()+"</td>"
-	    							+ "<td>"+material.getName()+"</td>"
-	    							+ "<td>"+material.getDescription()+"</td>"
-	    							+ "<td>"+material.getPrice()+"</td>"
-	    							+ "<td>"+material.getCategory().getName()+"</td>");			
-	    			}
+					List<Material> listMaterial = null;
+						listMaterial = CRUDMaterial.getMaterials();
+					
+					for(Material material : listMaterial) {
+						
+						out.println("<tr>"
+    							+ "<td>" + material.getCode()+"</td>"
+    							+ "<td>" + material.getName()+"</td>"
+    							+ "<td>" + material.getDescription()+"</td>"
+    							+ "<td>" + material.getPrice()+"</td>"
+    							+ "<td>" + material.getCategory().getName()+"</td>");	
+						
+					}
 	    			out.println("</table>"
 	    					+ "</div>"
 	    					+ "</body>"
 	    					+ "</html>");
 	    			
 		
-				} finally {
+				} catch(Exception e) {
 					out.close();
 				}
 	    		
@@ -118,7 +111,6 @@ public class Login extends HttpServlet {
 		}
 		
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
