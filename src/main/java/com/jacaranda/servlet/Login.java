@@ -2,6 +2,8 @@ package com.jacaranda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jacaranda.models.CRUDMaterial;
 import com.jacaranda.models.Conn;
 import com.jacaranda.models.LoginUtils;
+import com.jacaranda.models.Material;
 
 /**
  * Servlet implementation class Login
@@ -43,8 +47,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		
 		
 		String name = request.getParameter("user");
 		String pass = request.getParameter("password");
@@ -54,18 +57,73 @@ public class Login extends HttpServlet {
 				HttpSession userSession = request.getSession();
 				userSession.setAttribute("login", "True");
 				userSession.setAttribute("usuario", name);
-	    		RequestDispatcher rd = request.getRequestDispatcher("construction.jsp");
-	    		rd.forward(request, response);
+				
+				response.setContentType("text/html");
+				PrintWriter out = response.getWriter();
+				try {
+					out.println("<!DOCTYPE html>"
+							+ "<html>"
+							+ "<head>"
+	    					+ "<meta charset=\"UTF-8\">"
+	    					+ "<title>Peliculas</title>"
+	    					+ "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/styleTablePage.css\">"
+	    					+ "</head>"
+	    					+ "<body background=\"images/fondo2.jpg\">");
+					
+					List<Material> listMaterial = null;
+					
+					try {
+						listMaterial = CRUDMaterial.getMaterials();
+					} catch (Exception e) {
+						response.sendRedirect("index.jsp?msg_error=true");					
+					}
+					
+					out.println("<div>"
+	    					+ "<table>"
+	    					+ "<tr>"
+	    					+ "<th>Codigo</th>"
+	    					+ "<th>Nombre</th>"
+	    					+ "<th>Description</th>"
+	    					+ "<th>Price</th>"
+	    					+ "<th>CategoryCode</th>"
+	    					+ "</tr>");
+					
+					Iterator<Material> iterator = listMaterial.iterator();
+	    			while(iterator.hasNext()) { 
+	    				//Itera cada linea de nuestra base datos y nos la muestra en la tabla correspondiente.
+	    				
+	    				Material material = new Material();
+	    				material=iterator.next();
+	    					Integer id = material.getCode();
+	    					
+	    					out.println("<tr>"
+	    							+ "<td>"+material.getCode()+"</td>"
+	    							+ "<td>"+material.getName()+"</td>"
+	    							+ "<td>"+material.getDescription()+"</td>"
+	    							+ "<td>"+material.getPrice()+"</td>"
+	    							+ "<td>"+material.getCategory().getName()+"</td>");			
+	    			}
+	    			out.println("</table>"
+	    					+ "</div>"
+	    					+ "</body>"
+	    					+ "</html>");
+	    			
+		
+				} finally {
+					out.close();
+				}
+	    		
 			}else {
 				response.sendRedirect("index.jsp?msg_error=true");
 			}
+			
 		}else {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp?msg_error=true");
 			rd.include(request, response);
 		}
 		
-		out.close();
+		
 		
 	}
 
