@@ -2,8 +2,9 @@
 
 
 	body { 
-		font: 14px/1.4 "Times New Roman", Times, serif; 
+		font-family: 'Muli',sans-serif;
 		margin-left:1em;
+		height:100vh;
 	}
 	
 	#header{
@@ -23,6 +24,10 @@
 	#msg_error{
 		color: red;
 		
+	}
+	
+	.opacidad{
+	background: rgba(255,255,255,0.6); 
 	}
 	
 	#addButton{

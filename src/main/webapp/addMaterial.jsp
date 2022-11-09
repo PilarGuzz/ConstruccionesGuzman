@@ -5,10 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Lista</title>
+<link rel="stylesheet" type="text/css" href="CSS/generalStyle.css">
 </head>
-<body>
+<body background="images/fondoBrick.jpg">
 	<div id="header">
-       
+    	<img src="images/logo2.png" width="140px" height="100px" id="logo">
+        <br>
         <hr>
     </div>
     <div id="contenido">
@@ -16,7 +18,7 @@
 		<h1>Añadir Material a la venta: </h1>
 					
 		<!-- POR HACER -->		
-		<fieldset style="width:fit-content">
+		<fieldset style="width:fit-content" class="opacidad">
 			<legend id="legends"><b>Rellene los siguientes datos: </b></legend>
 					Nombre: <input type="text" name="nameMaterial" min=1800 required><br>
 					<br>
@@ -29,6 +31,8 @@
 					<br>
 					Precio: <input type="number" step="any" id="" name="price" min=1 max=500000 required><br>
 					<br>
+					
+					<input type="submit">
 					
 		
 		</fieldset>

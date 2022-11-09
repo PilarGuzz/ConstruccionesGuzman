@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+body{
+	background-color: transparent;
+	height:100vh;
+	font-family: 'Muli',sans-serif;
+	
+}
+#logo{
+	position: absolute;
+    top: 35%;
+    left: 53%;
+    margin: -126px;
+}
+
 #container{
     display:table-cell;
     width:100%;
@@ -8,20 +21,31 @@
     text-align:center;
     
 }
-#centroLogin{
+.centroLogin{
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -126px;
+    padding-bottom: 2%;
+    width: 280px;
+    min-height: 250px;
+    background-color: rgb(192, 192, 192);
+    border-radius: 20px;
+    border: inset;
+    font-size: large;
+  
+}
+.signUp{
+	position: absolute;
     top: 50%;
     left: 50%; 
     margin: -126px;
     width: 250px;
     min-height: 250px;
-    background-color: #658df7;
-    border-style: double;
+    background-color: rgb(192, 192, 192);
+   
     border-radius: 20px;
-  
-}#titulo{
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
+	
 }
 #textoUser{
     text-align: justify;
