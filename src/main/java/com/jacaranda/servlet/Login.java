@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jacaranda.models.CRUDMaterial;
-import com.jacaranda.models.Conn;
 import com.jacaranda.models.LoginUtils;
 import com.jacaranda.models.Material;
+import com.jacaranda.models.User;
 
 /**
  * Servlet implementation class Login
@@ -50,6 +50,7 @@ public class Login extends HttpServlet {
 		
 		String name = request.getParameter("user");
 		String pass = request.getParameter("password");
+		PrintWriter out = response.getWriter();
 		if(name !=null && pass !=null){
 
 			if(LoginUtils.validate(name, pass)) {
@@ -57,28 +58,45 @@ public class Login extends HttpServlet {
 				userSession.setAttribute("login", "True");
 				userSession.setAttribute("usuario", name);
 				
+			
+				
 				response.setContentType("text/html");
-				PrintWriter out = response.getWriter();
+				
 				try {
 					out.println("<!DOCTYPE html>"
 							+ "<html>"
 							+ "<head>"
 	    					+ "<meta charset=\"UTF-8\">"
 	    					+ "<title>Materiales</title>"
+	    					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/tablePage.css\">"
 	    					+ "</head>"
-	    					+ "<body>"
-							+ "<div>"
+	    					+ "<body background=\"images/fondo2.jpg\">"
+	    					+ "<div id=\"header\"> </div>"
+							+ "<hr>");
+							User user = LoginUtils.getUser(name);
+	    					if(user.isAdmin()) {
+	    						out.println(  "</div>"
+	    								+"<div id=\"botonadd\" align=\"right\">"
+	    								//POR HACER
+	    								+"<a href=\"addMaterial.jsp\" ><button name=\"addMaterial\" id=\"addButton\" value=\"addMaterial\">Añadir Material</button></a>"
+	    								+"</div>"
+	    								+"<br>"
+	    							);
+	    					}
+	    					out.println("<div>"
 	    					+ "<table>"
 	    					+ "<tr>"
 	    					+ "<th>Codigo</th>"
 	    					+ "<th>Nombre</th>"
 	    					+ "<th>Description</th>"
 	    					+ "<th>Price</th>"
-	    					+ "<th>CategoryCode</th>"
+	    					+ "<th>Category</th>"
 	    					+ "</tr>");
 					
+					
+					
 					List<Material> listMaterial = null;
-						listMaterial = CRUDMaterial.getMaterials();
+					listMaterial = CRUDMaterial.getMaterials();
 					
 					for(Material material : listMaterial) {
 						
@@ -101,13 +119,30 @@ public class Login extends HttpServlet {
 				}
 	    		
 			}else {
-				response.sendRedirect("index.jsp?msg_error=true");
+				//response.sendRedirect("index.jsp?msg_error=true");
+				out.println("<!DOCTYPE html>"
+						+ "<html>"
+						+ "<head>"
+    					+ "<meta charset=\"UTF-8\">"
+    					+ "<title>Materiales</title>"
+    					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">"
+    					+ "</head>"
+    					+ "<body background=\"images/fondo2.jpg\">"
+    					+ "<a href=\"login.jsp\"><img src=\"images/icono2.png\" width=\"110px\" height=\"100px\" id=\"logo\"></a>"
+    		            + "<hr>"
+    		            + "<div id=\"izq\">"  
+    		            + "<img src=\"images/error.png\" id=\"iconoError\">"
+    		            + "</div>"
+    		            + "<div id=\"der\">"
+    		            + "<h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>"
+    		            + "<h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido encontrar<br> la página que buscas.</FONT></h3>"
+    		            + "<h7 id=\"codError\">Codigo de error: 404</h7>"
+    		            + "</div>"
+    					+ "</body>"
+    					+ "</html>");
+				
 			}
 			
-		}else {
-			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp?msg_error=true");
-			rd.include(request, response);
 		}
 		
 		

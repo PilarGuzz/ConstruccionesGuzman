@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="CSS/generalStyle.css">
 </head>
 <body>
 
@@ -12,20 +13,26 @@
 		<form action="SignUp" method="POST" id="addUser">			
 		
 			<h3>Rellene los siguientes datos:</h3>
+			<label for="username">Username: </label>
+			<input type="text" name="username" id="username" required><br>
 			
-					Username: <input type="text" name="username" id="username" required><br>
+			<label for="password">Password: </label>
+			<input type="password" name="password"  id="password" required><br>
 					
-					Password: <input type="password" name="password"  id="password" required><br>
+			<label for="first_name">First name:</label>
+			<input type="text" name="first_name" id="first_name" required><br>
+						
+			<label for="last_name">Last name:</label>
+			<input type="text" name="last_name" id="last_name" required><br>
 					
-					First name:<input type="text" name="first_name" id="first_name" required>
+			<label for="date">Fecha de nacimiento: </label>
+			<input type="date" name="date" required><br><br>
 					
-					
-					Last name:<input type="text" name="last_name" id="last_name" required>
-					
-					Fecha de nacimiento: <input type="date" name="date" required><br>
-					
-					Género: Hombre<input type="radio" name="gender" value="H" required>
-					Mujer <input type="radio" name="gender" value="M" required>
+			<label for="gender">Género: </label>
+			<label for="gender">Hombre </label>
+			<input type="radio" name="gender" value="H" required>
+			<label for="gender">Mujer </label> 
+			<input type="radio" name="gender" value="M" required><br>
 					
 					
 					
