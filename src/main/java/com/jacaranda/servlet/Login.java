@@ -48,19 +48,27 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		String name = request.getParameter("user");
-		String pass = request.getParameter("password");
+		HttpSession userSession = request.getSession();
+		String name = (String) userSession.getAttribute("usuario");
+		String pass = (String) userSession.getAttribute("password");
+		
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		if (name != null && pass != null) {
+		
+		
+		if ((name == null && pass == null)) {
+			name = request.getParameter("user");
+			pass = request.getParameter("password");
+		}
 
 			if (LoginUtils.validate(name, pass)) {
-				HttpSession userSession = request.getSession();
+				
 				userSession.setAttribute("login", "True");
 				userSession.setAttribute("usuario", name);
+				userSession.setAttribute("password", pass);
 
-				response.setContentType("text/html");
+
 
 				try {
 					out.println("<!DOCTYPE html>" 
@@ -132,7 +140,7 @@ public class Login extends HttpServlet {
 
 		}
 
-	}
+	
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)

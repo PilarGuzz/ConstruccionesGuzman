@@ -1,3 +1,7 @@
+<%@page import="com.jacaranda.models.CRUDCategory"%>
+<%@page import="com.jacaranda.models.Category"%>
+<%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,7 +18,7 @@
         <hr>
     </div>
     <div id="contenido">
-				<form action="addCarMethod.jsp" method="GET" id="annadirCarForm">
+				<form action="addMaterialMethod.jsp" method="GET" id="annadirCarForm">
 		<h1>Añadir Material a la venta: </h1>
 					
 		<!-- POR HACER -->		
@@ -25,19 +29,28 @@
 					Descripcion: <input type="text" name="descriptionMaterial" min=1800 required><br>
 					<br>
 					Categoria:
-					<option>
-						<select></select>
-					</option>
+					<select id="cat">
+					<% ArrayList<Category> categoryList = CRUDCategory.getCategories(); 
+						for(Category cate : categoryList){
+							%>
+							<option name="category" value="<%=cate.getCode()%>"><%=cate.getName()%></option>
+						<%}%>
+						
+					</select>
 					<br>
-					Precio: <input type="number" step="any" id="" name="price" min=1 max=500000 required><br>
+					<br>
+					Precio: <input type="number" step="any" id="" name="price" min=1 max=300 required><br>
 					<br>
 					
 					<input type="submit">
 					
 		
 		</fieldset>
-					</form>
-			<p><a href="Login" ><button name="Back" id="addButton" value="back">Volver </button></a></p>
+	</form>
+	<form method="post" action="Login">
+			<p><button name="Back" value="back" type="submit">Volver </button></p>
+	
+	</form>				
 				
 		
     </div>           
