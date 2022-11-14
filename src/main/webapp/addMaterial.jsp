@@ -29,11 +29,11 @@
 					Descripcion: <input type="text" name="descriptionMaterial" min=1800 required><br>
 					<br>
 					Categoria:
-					<select id="cat">
+					<select id="cat" name="cat">
 					<% ArrayList<Category> categoryList = CRUDCategory.getCategories(); 
 						for(Category cate : categoryList){
 							%>
-							<option name="category" value="<%=cate.getCode()%>"><%=cate.getName()%></option>
+							<option value="<%=cate.getCode()%>"><%=cate.getName()%></option>
 						<%}%>
 						
 					</select>

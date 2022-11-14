@@ -1,6 +1,7 @@
 package com.jacaranda.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -46,14 +47,30 @@ public class SignUp extends HttpServlet {
 		LocalDate date = LocalDate.parse(request.getParameter("date"));
 		String gender = request.getParameter("gender");
 		
+		PrintWriter out = response.getWriter();
+		
 		if(LoginUtils.getUser(username)==null){
-		User u  = new User(username,LoginUtils.getMD5(password),first_name,last_name,
-				date,gender);
-		LoginUtils.saveUser(u);
+			User u  = new User(username,LoginUtils.getMD5(password),first_name,last_name,date,gender);
+			LoginUtils.saveUser(u);
 		response.sendRedirect("index.jsp?funciona");
 			
 		}else{
-			response.sendRedirect("index.jsp?noFunciona");
+			out.println("<!DOCTYPE html>" 
+					+ "<html>" 
+					+ "<head>" 
+					+ "<meta charset=\"UTF-8\">"
+					+ "<title>Materiales</title>"
+					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
+					+ "<body background=\"images/fondo2.jpg\">"
+					+ "<img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\">"
+					+ "<hr>" 
+					+ "<div id=\"izq\">" + "<img src=\"images/error.png\" id=\"iconoError\">" + "</div>"
+					+ "<div id=\"der\">" 
+					+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
+					+ "<h3 id=\"TextoChico\">El usuario<br> ya existe</FONT></h3>"
+					+ "</div>" 
+					+ "</body>" 
+					+ "</html>");
 		}
 		
 	}

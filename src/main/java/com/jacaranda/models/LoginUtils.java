@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -66,8 +68,12 @@ public class LoginUtils {
 	// Cerrar sesion. Limpia parametros y atributos de la session actual.
 
 	public static void closeSession() {
+		
 		Session session = Conn.getSession();
+		session.delete(session);
+		session.disconnect();
 		session.clear();
+		
 	}
 
 }

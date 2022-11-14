@@ -33,16 +33,6 @@ public class Login extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -77,7 +67,9 @@ public class Login extends HttpServlet {
 							+ "<meta charset=\"UTF-8\">"
 							+ "<title>Materiales</title>"
 							+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/tablePage.css\">" + "</head>"
-							+ "<body background=\"images/fondoBrick.jpg\">" + "<div id=\"header\"> </div>" + "<hr>");
+							+ "<body background=\"images/fondoBrick.jpg\">" + "<div id=\"header\"> </div>" 
+							+ "<a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"><a>"
+							+ "<hr>");
 					User user = LoginUtils.getUser(name);
 					if (user.isAdmin()) {
 						out.println("</div>" 
@@ -125,7 +117,7 @@ public class Login extends HttpServlet {
 						+ "<title>Materiales</title>"
 						+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
 						+ "<body background=\"images/fondo2.jpg\">"
-						+ "<img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\">"
+						+ "<a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"><a>"
 						+ "<hr>" 
 						+ "<div id=\"izq\">" + "<img src=\"images/error.png\" id=\"iconoError\">" + "</div>"
 						+ "<div id=\"der\">" 
@@ -140,14 +132,5 @@ public class Login extends HttpServlet {
 
 		}
 
-	
-
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
 
 }

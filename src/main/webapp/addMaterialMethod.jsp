@@ -21,7 +21,7 @@
 	
 		String name = String.valueOf(request.getParameter("nameMaterial"));
 		String description = String.valueOf(request.getParameter("descriptionMaterial"));
-		int code = Integer.valueOf(request.getParameter("category"));
+		int code = Integer.valueOf(request.getParameter("cat"));
 		Double price = Double.valueOf(request.getParameter("price"));
 		
 		Category cat = CRUDCategory.getCategory(code);
