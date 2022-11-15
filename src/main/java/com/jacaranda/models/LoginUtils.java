@@ -32,7 +32,7 @@ public class LoginUtils {
 	public static ArrayList<User> getUsers() {
 		Session session = Conn.getSession();
 
-		Query<User> query = session.createQuery("SELECT p FROM com.jacaranda.java.User p");
+		Query<User> query = session.createQuery("SELECT p FROM com.jacaranda.models.User p");
 		ArrayList<User> users = (ArrayList<User>) query.getResultList();
 
 		return users;
@@ -42,7 +42,11 @@ public class LoginUtils {
 	public static boolean validate(String username, String password) {
 		String passwordEncript = getMD5(password);
 		boolean valid = false;
-		if (getUser(username) != null) {
+		Session session = Conn.getSession();
+		Query<User> query = session.createQuery("SELECT p FROM com.jacaranda.models.User p where username='" + username+"' and pass='" + passwordEncript +"'", User.class);
+
+
+		if (!query.getResultList().isEmpty()) {
 			valid = true;
 		}
 

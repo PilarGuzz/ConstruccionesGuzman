@@ -15,6 +15,14 @@ public class CRUDMaterial {
 		return material;
 	}
 	
+	public static Material getMaterialByName(String name ) {
+		Session session = Conn.getSession();
+		Query<Material> query = session.createQuery("SELECT p FROM com.jacaranda.models.Material p where name='" + name+"'", Material.class);
+
+		Material material =  query.getSingleResult();
+		return material;
+	}
+	
 	public static boolean saveMaterial( Material mat) {
 		boolean resultado=false;
 		Session session = Conn.getSession();

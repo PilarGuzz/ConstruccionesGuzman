@@ -59,7 +59,7 @@ public class Login extends HttpServlet {
 				userSession.setAttribute("password", pass);
 
 
-
+ 
 				try {
 					out.println("<!DOCTYPE html>" 
 							+ "<html>" 
@@ -123,6 +123,7 @@ public class Login extends HttpServlet {
 						+ "<div id=\"der\">" 
 						+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
 						+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
+						+ "<h7 id=\"msg\">Usuario o contraseña erronea</h7> <br>" 
 						+ "<h7 id=\"codError\">Codigo de error: 404</h7>" 
 						+ "</div>" 
 						+ "</body>" 

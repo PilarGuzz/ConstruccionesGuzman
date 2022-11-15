@@ -19,11 +19,17 @@
 				<h1 id="titulo">Bienvenido</h1>
 				<%
 				//Se comprueba si existe la variable error que vendría true del checkLogin si algun campo fuese incorrecto
-				String messageLog = request.getParameter("msg_error");
+				String messageLog = request.getParameter("msg_user");
+				String messageLogError = request.getParameter("msg_userError");
 				if (messageLog != null) {
 				%>
 				<div>
-					<span>El usuario o la contraseña son incorrectos</span>
+					<span>El usuario ha sido creado correctamente</span>
+				</div>
+				<%}else if(messageLogError != null) {
+				%>
+				<div>
+					<span>Ha ocurriedo un error al crear el usuario</span>
 				</div>
 				<%}%>
 

@@ -18,7 +18,7 @@
         <hr>
     </div>
     <div id="contenido">
-				<form action="addMaterialMethod.jsp" method="GET" id="annadirCarForm">
+				<form action="AddMaterial" method="POST">
 		<h1>Añadir Material a la venta: </h1>
 					
 		<!-- POR HACER -->		

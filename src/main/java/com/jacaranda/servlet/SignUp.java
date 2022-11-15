@@ -3,6 +3,8 @@ package com.jacaranda.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,15 +46,25 @@ public class SignUp extends HttpServlet {
 		String password = request.getParameter("password");
 		String first_name = request.getParameter("first_name");
 		String last_name = request.getParameter("last_name");
-		LocalDate date = LocalDate.parse(request.getParameter("date"));
+		LocalDateTime date = null;
 		String gender = request.getParameter("gender");
+		try {
+			date = LocalDateTime.of(LocalDate.parse(request.getParameter("date")), LocalTime.now());
+
+		}catch(Exception e){
+			response.sendRedirect("index.jsp?msg_userError=true");
+		}
 		
 		PrintWriter out = response.getWriter();
 		
-		if(LoginUtils.getUser(username)==null){
-			User u  = new User(username,LoginUtils.getMD5(password),first_name,last_name,date,gender);
-			LoginUtils.saveUser(u);
-		response.sendRedirect("index.jsp?funciona");
+		if(username!=null && password != null && first_name != null && last_name != null && date != null && gender != null){
+			
+			if(LoginUtils.getUser(username)==null) {
+				
+				User u  = new User(username,LoginUtils.getMD5(password),first_name,last_name,date,gender);
+				LoginUtils.saveUser(u);
+				response.sendRedirect("index.jsp?msg_user=true");
+			}
 			
 		}else{
 			out.println("<!DOCTYPE html>" 

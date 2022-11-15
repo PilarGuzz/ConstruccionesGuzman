@@ -1,5 +1,6 @@
 package com.jacaranda.models;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 	@Column(name = "birthday")
-	private LocalDate birthday;
+	private LocalDateTime birthday;
 	@Column(name = "gender")
 	private String gender;
 	@Column(name = "admin")
@@ -29,7 +30,7 @@ public class User {
 	}
 
 	
-	public User(String username, String password, String name, String lastName, LocalDate birthday, String gender) {
+	public User(String username, String password, String name, String lastName, LocalDateTime birthday, String gender) {
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -80,12 +81,12 @@ public class User {
 	}
 
 
-	public LocalDate getBirthday() {
+	public LocalDateTime getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(LocalDate birthday) {
+	public void setBirthday(LocalDateTime birthday) {
 		this.birthday = birthday;
 	}
 

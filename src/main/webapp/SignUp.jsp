@@ -17,7 +17,7 @@
 			<input type="text" name="username" id="username" required><br>
 			
 			<label for="password">Password: </label>
-			<input type="password" name="password"  id="password" required><br>
+			<input type="password" name="password"  id="password" required minlength="6" maxlenght="12"><br>
 					
 			<label for="first_name">First name:</label>
 			<input type="text" name="first_name" id="first_name" required><br>
