@@ -19,7 +19,7 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 	@Column(name = "birthday")
-	private LocalDateTime birthday;
+	private LocalDate birthday;
 	@Column(name = "gender")
 	private String gender;
 	@Column(name = "admin")
@@ -30,7 +30,7 @@ public class User {
 	}
 
 	
-	public User(String username, String password, String name, String lastName, LocalDateTime birthday, String gender) {
+	public User(String username, String password, String name, String lastName, LocalDate birthday, String gender) {
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -81,12 +81,12 @@ public class User {
 	}
 
 
-	public LocalDateTime getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(LocalDateTime birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 

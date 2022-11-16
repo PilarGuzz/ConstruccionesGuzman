@@ -9,7 +9,7 @@
 <%session.invalidate();%>
 <body background="images/fondoBrick.jpg">
 
-	<div id="container">
+	<div id="container" align="center">
 		<img src="images/logo2.png" width="180px" height="120px" id="logo">
 
 

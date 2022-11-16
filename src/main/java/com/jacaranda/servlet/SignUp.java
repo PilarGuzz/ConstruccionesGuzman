@@ -46,10 +46,10 @@ public class SignUp extends HttpServlet {
 		String password = request.getParameter("password");
 		String first_name = request.getParameter("first_name");
 		String last_name = request.getParameter("last_name");
-		LocalDateTime date = null;
+		LocalDate date = null;
 		String gender = request.getParameter("gender");
 		try {
-			date = LocalDateTime.of(LocalDate.parse(request.getParameter("date")), LocalTime.now());
+			date = LocalDate.parse(request.getParameter("date"));
 
 		}catch(Exception e){
 			response.sendRedirect("index.jsp?msg_userError=true");

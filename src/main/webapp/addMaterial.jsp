@@ -18,7 +18,7 @@
         <hr>
     </div>
     <div id="contenido">
-				<form action="AddMaterial" method="POST">
+		<form action="AddMaterial" method="POST">
 		<h1>Añadir Material a la venta: </h1>
 					
 		<!-- POR HACER -->		

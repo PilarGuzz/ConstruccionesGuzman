@@ -38,21 +38,21 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		HttpSession userSession = request.getSession();
-		String name = (String) userSession.getAttribute("usuario");
-		String pass = (String) userSession.getAttribute("password");
+
+		String name = request.getParameter("user");
+		String pass = request.getParameter("password");
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
 		
 		if ((name == null && pass == null)) {
-			name = request.getParameter("user");
-			pass = request.getParameter("password");
+			 name = (String) userSession.getAttribute("usuario");
+			 pass = (String) userSession.getAttribute("password");
 		}
 
-			if (LoginUtils.validate(name, pass)) {
+		if (LoginUtils.validate(name, pass)) {
 				
 				userSession.setAttribute("login", "True");
 				userSession.setAttribute("usuario", name);

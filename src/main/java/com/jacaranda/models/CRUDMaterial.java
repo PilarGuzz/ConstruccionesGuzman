@@ -15,12 +15,20 @@ public class CRUDMaterial {
 		return material;
 	}
 	
+	/*Como el nombre es unico, se debe comprobar si existe antes de añadirlo por nombre
+	 * */
 	public static Material getMaterialByName(String name ) {
 		Session session = Conn.getSession();
-		Query<Material> query = session.createQuery("SELECT p FROM com.jacaranda.models.Material p where name='" + name+"'", Material.class);
-
-		Material material =  query.getSingleResult();
-		return material;
+		Material material = null;
+		try {
+			Query<Material> query = session.createQuery("SELECT p FROM com.jacaranda.models.Material p where name='" + name+"'", Material.class);
+			
+			material =  query.getSingleResult();
+			return material;
+		}catch(Exception e) {
+			return material;
+		}
+		
 	}
 	
 	public static boolean saveMaterial( Material mat) {

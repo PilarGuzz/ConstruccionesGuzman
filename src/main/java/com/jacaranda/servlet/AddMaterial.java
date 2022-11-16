@@ -36,7 +36,6 @@ public class AddMaterial extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		String name = String.valueOf(request.getParameter("nameMaterial"));
 		String description = String.valueOf(request.getParameter("descriptionMaterial"));
@@ -51,6 +50,7 @@ public class AddMaterial extends HttpServlet {
 			CRUDMaterial.saveMaterial(mat);
 			ServletContext context = this.getServletContext();
 			RequestDispatcher dispatcher = context.getRequestDispatcher("/Login");
+			dispatcher.forward(request, response);
 			
 		}else {
 			// response.sendRedirect("index.jsp?msg_error=true");
