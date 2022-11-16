@@ -34,8 +34,10 @@ public class SignUp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println(errorHTML("No se admiten peticiones GET"));
+	
 	}
 
 	/**
@@ -59,33 +61,44 @@ public class SignUp extends HttpServlet {
 		
 		if(username!=null && password != null && first_name != null && last_name != null && date != null && gender != null){
 			
-			if(LoginUtils.getUser(username)==null) {
+			if((password.length()>=6 && password.length()<=12) && (gender.equalsIgnoreCase("H") || gender.equalsIgnoreCase("M"))) {
 				
-				User u  = new User(username,LoginUtils.getMD5(password),first_name,last_name,date,gender);
-				LoginUtils.saveUser(u);
-				response.sendRedirect("index.jsp?msg_user=true");
+			
+				if(LoginUtils.getUser(username)==null) {
+					
+					User u  = new User(username,LoginUtils.getMD5(password),first_name,last_name,date,gender);
+					LoginUtils.saveUser(u);
+					response.sendRedirect("index.jsp?msg_user=true");
+				}
+			}else{
+				out.println( errorHTML("Algunos campos no son válidos"));
+				
 			}
 			
 		}else{
-			out.println("<!DOCTYPE html>" 
-					+ "<html>" 
-					+ "<head>" 
-					+ "<meta charset=\"UTF-8\">"
-					+ "<title>Error</title>"
-					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
-					+ "<body class=\"background\" background=\"images/error2.jpg\">"
-					+"<form method=\"post\" action=\"Login\">\n"
-					+ "	<p><button name=\"Back\" value=\"back\" type=\"submit\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </button></p>\n"
-					+ "	</form>	"
-					+ "<div id=\"der\">" 
-					+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
-					+ "<h3 id=\"TextoChico\">El usuario<br> ya existe</FONT></h3>"
-					+ "</div>" 
-					+ "</body>" 
-					+ "</html>");
+			out.println(errorHTML("El usuario<br> ya existe"));
 			
 		}
 		
+	}
+	public static String errorHTML(String cadena) {
+		String error = "<!DOCTYPE html>" 
+				+ "<html>" 
+				+ "<head>" 
+				+ "<meta charset=\"UTF-8\">"
+				+ "<title>Error</title>"
+				+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/styleError.css\">" + "</head>"
+				+ "<body class=\"background\" background=\"images/error2.jpg\">"
+				+ "	<p><a href=\"index\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </a></p>\n"
+				+ "<div id=\"der\">" 
+				+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
+				+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
+				+ "<h7 id=\"msg\">"+cadena+"</h7> <br>" 
+			
+				+ "</div>" 
+				+ "</body>" 
+				+ "</html>";
+		return error;
 	}
 
 }

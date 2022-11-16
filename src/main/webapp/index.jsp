@@ -44,13 +44,13 @@
 						<br>
 	
 						<p>
-							<input type="submit" id="Enviar" value="Enviar">
+							<input type="submit" id="Enviar" value="Enviar" class="button">
 						</p>
 				</form>
 				<hr>
 				<div class="register">
 					¿No tienes cuenta?, Registrate <br></br> 
-					<a href='SignUp.jsp'><button id='SignUp'>Sign Up</button></a>
+					<a href='SignUp.jsp'><button id='SignUp' class="button">Sign Up</button></a>
 				</div>
 	
 			</div>

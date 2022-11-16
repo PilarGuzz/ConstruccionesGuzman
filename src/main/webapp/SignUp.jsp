@@ -38,9 +38,9 @@
 				<input type="radio" name="gender" value="H" required> 
 				<label for="gender">Mujer </label> 
 				<input type="radio" name="gender" value="M" required><br> <br>
-				<button type="submit" id="loginButton" class="login_button">Enviar</button>
-				<button type="reset" id="resetButton" class="login_button">Borrar</button>
-				<button onclick="location.href='index.jsp'" value="Volver al Inicio" />
+				<button type="submit" id="loginButton" class="login_button button">Enviar</button>
+				<button type="reset" id="resetButton" class="login_button button">Borrar</button>
+				<button onclick="location.href='index.jsp'" value="Volver al Inicio"  class="button"/>
 				Inicio
 				</button>
 

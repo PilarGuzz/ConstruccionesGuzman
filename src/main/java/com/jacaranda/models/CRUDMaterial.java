@@ -45,6 +45,7 @@ public class CRUDMaterial {
 			resultado=true;			
 			
 		} catch (Exception e) {
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		return resultado;
@@ -62,6 +63,7 @@ public class CRUDMaterial {
 			resultado=true;			
 			
 		} catch (Exception e) {
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		return resultado;
@@ -76,6 +78,8 @@ public class CRUDMaterial {
 		
 		return list;
 	}
+	
+	
 	
 
 }

@@ -76,7 +76,7 @@ public class Login extends HttpServlet {
 						out.println("</div>" 
 								+ "<div id=\"botonadd\" align=\"right\">"
 								// POR HACER
-								+ "<a href=\"addMaterial.jsp\" ><button name=\"addMaterial\" id=\"addButton\" value=\"addMaterial\">Añadir Material</button></a>"
+								+ "<a href=\"addMaterial.jsp\" ><button class=\"addbutton\" name=\"addMaterial\" id=\"addButton\" value=\"addMaterial\">Añadir Material</button></a>"
 								+ "</div>" 
 								+ "<br>");
 					}
@@ -111,51 +111,45 @@ public class Login extends HttpServlet {
 				
 			} else {
 				// response.sendRedirect("index.jsp?msg_error=true");
-				out.println("<!DOCTYPE html>" 
-						+ "<html>" 
-						+ "<head>" 
-						+ "<meta charset=\"UTF-8\">"
-						+ "<title>Error</title>"
-						+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
-						+ "<body class=\"background\" background=\"images/error2.jpg\">"
-						+"<form method=\"post\" action=\"Login\">\n"
-						+ "	<p><button name=\"Back\" value=\"back\" type=\"submit\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </button></p>\n"
-						+ "	</form>	"
-						+ "<div id=\"der\">" 
-						+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
-						+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
-						+ "<h7 id=\"msg\">Usuario o contraseña erroneos</h7> <br>" 
+				out.println(errorHTML("Usuario o contraseña erroneos"));
 					
-						+ "</div>" 
-						+ "</body>" 
-						+ "</html>");
 				
 			}
 		} else {
 		
-			out.println("<!DOCTYPE html>" 
-					+ "<html>" 
-					+ "<head>" 
-					+ "<meta charset=\"UTF-8\">"
-					+ "<title>Error</title>"
-					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
-					+ "<body class=\"background\" background=\"images/error2.jpg\">"
-					+"<form method=\"post\" action=\"Login\">\n"
-					+ "	<p><button name=\"Back\" value=\"back\" type=\"submit\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </button></p>\n"
-					+ "	</form>	"
-					+ "<div id=\"der\">" 
-					+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
-					+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
-					+ "<h7 id=\"msg\">Usuario nulo, rellene los campos</h7> <br>" 
-				
-					+ "</div>" 
-					+ "</body>" 
-					+ "</html>");
+			out.println(errorHTML("Usuario nulo, rellene los campos"));
+							
+		}
 
+		}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = resp.getWriter();
+		out.println(errorHTML("No se admiten peticiones GET"));
+	}
+	
+	public static String errorHTML(String cadena) {
+		String error = "<!DOCTYPE html>" 
+				+ "<html>" 
+				+ "<head>" 
+				+ "<meta charset=\"UTF-8\">"
+				+ "<title>Error</title>"
+				+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/styleError.css\">" + "</head>"
+				+ "<body class=\"background\" background=\"images/error2.jpg\">"
+				+ "	<p><a href=\"index\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </a></p>\n"
+				+ "<div id=\"der\">" 
+				+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
+				+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
+				+ "<h7 id=\"msg\">"+cadena+"</h7> <br>" 
 			
-		}
+				+ "</div>" 
+				+ "</body>" 
+				+ "</html>";
+		return error;
+	}
 
-		}
 
 
 }

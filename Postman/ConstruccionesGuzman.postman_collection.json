@@ -1,0 +1,1045 @@
+{
+	"info": {
+		"_postman_id": "b4711f1a-6e3d-482a-9998-87e8e3abbf51",
+		"name": "ConstruccionesGuzman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24400951"
+	},
+	"item": [
+		{
+			"name": "Pruebas inicio sesion",
+			"item": [
+				{
+					"name": "user vacio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "null",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "null",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user null",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user=null&password=null",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "null"
+								},
+								{
+									"key": "password",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pass incorrecta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user=pilar&password=pilar123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "pilar"
+								},
+								{
+									"key": "password",
+									"value": "pilar123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pass vacia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user=pilar&password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "pilar"
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "username vacio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user&password=pilar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": "pilar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "username incorrecto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user=pilar12&password=pilar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "pilar12"
+								},
+								{
+									"key": "password",
+									"value": "pilar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user admin correcto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user=pilar&password=pilar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "pilar"
+								},
+								{
+									"key": "password",
+									"value": "pilar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user no admin correcto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login?user=juan&password=juan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "juan"
+								},
+								{
+									"key": "password",
+									"value": "juan"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "peticion get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/Login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pruebas addMaterial",
+			"item": [
+				{
+					"name": "campos vacios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial?nameMaterial=&descriptionMaterial=&cat=&price=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							],
+							"query": [
+								{
+									"key": "nameMaterial",
+									"value": ""
+								},
+								{
+									"key": "descriptionMaterial",
+									"value": ""
+								},
+								{
+									"key": "cat",
+									"value": ""
+								},
+								{
+									"key": "price",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "precio invalido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial?nameMaterial=azulejo&descriptionMaterial=para decorar tu casita&cat=3&price=-10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							],
+							"query": [
+								{
+									"key": "nameMaterial",
+									"value": "azulejo"
+								},
+								{
+									"key": "descriptionMaterial",
+									"value": "para decorar tu casita"
+								},
+								{
+									"key": "cat",
+									"value": "3"
+								},
+								{
+									"key": "price",
+									"value": "-10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "peticion get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "campos nulos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial?nameMaterial=null&descriptionMaterial=null&cat=null&price=null",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							],
+							"query": [
+								{
+									"key": "nameMaterial",
+									"value": "null"
+								},
+								{
+									"key": "descriptionMaterial",
+									"value": "null"
+								},
+								{
+									"key": "cat",
+									"value": "null"
+								},
+								{
+									"key": "price",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categoria invalida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial?nameMaterial=loseta&descriptionMaterial=para decorar tu casita&cat=25&price=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							],
+							"query": [
+								{
+									"key": "nameMaterial",
+									"value": "loseta"
+								},
+								{
+									"key": "descriptionMaterial",
+									"value": "para decorar tu casita"
+								},
+								{
+									"key": "cat",
+									"value": "25"
+								},
+								{
+									"key": "price",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solo nombre y descripcion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial?nameMaterial=loseta&descriptionMaterial=para decorar tu casita&cat=&price=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							],
+							"query": [
+								{
+									"key": "nameMaterial",
+									"value": "loseta"
+								},
+								{
+									"key": "descriptionMaterial",
+									"value": "para decorar tu casita"
+								},
+								{
+									"key": "cat",
+									"value": ""
+								},
+								{
+									"key": "price",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "material correcto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/AddMaterial?nameMaterial=loseta3&descriptionMaterial=para decorar tu casita&cat=7&price=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"AddMaterial"
+							],
+							"query": [
+								{
+									"key": "nameMaterial",
+									"value": "loseta3"
+								},
+								{
+									"key": "descriptionMaterial",
+									"value": "para decorar tu casita"
+								},
+								{
+									"key": "cat",
+									"value": "7"
+								},
+								{
+									"key": "price",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pruebas addUser",
+			"item": [
+				{
+					"name": "addUser solo 2 campos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=lupita&password=lupita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "lupita"
+								},
+								{
+									"key": "password",
+									"value": "lupita"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser vacio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "genero y fecha mal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=lupita&password=lupita&first_name=lupe&last_name=lupe&gender=J&date=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "lupita"
+								},
+								{
+									"key": "password",
+									"value": "lupita"
+								},
+								{
+									"key": "first_name",
+									"value": "lupe"
+								},
+								{
+									"key": "last_name",
+									"value": "lupe"
+								},
+								{
+									"key": "gender",
+									"value": "J"
+								},
+								{
+									"key": "date",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuario correcto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=lupita&password=lupita&first_name=lupe&last_name=lupe&gender=M&date=1995-10-25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "lupita"
+								},
+								{
+									"key": "password",
+									"value": "lupita"
+								},
+								{
+									"key": "first_name",
+									"value": "lupe"
+								},
+								{
+									"key": "last_name",
+									"value": "lupe"
+								},
+								{
+									"key": "gender",
+									"value": "M"
+								},
+								{
+									"key": "date",
+									"value": "1995-10-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "genero incorrecto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=javier&password=javier&first_name=javier&last_name=javier&gender=S&date=2000-10-25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "javier"
+								},
+								{
+									"key": "password",
+									"value": "javier"
+								},
+								{
+									"key": "first_name",
+									"value": "javier"
+								},
+								{
+									"key": "last_name",
+									"value": "javier"
+								},
+								{
+									"key": "gender",
+									"value": "S"
+								},
+								{
+									"key": "date",
+									"value": "2000-10-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fecha incorrecta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=javier&password=javier&first_name=javier&last_name=javier&gender=H&date=2000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "javier"
+								},
+								{
+									"key": "password",
+									"value": "javier"
+								},
+								{
+									"key": "first_name",
+									"value": "javier"
+								},
+								{
+									"key": "last_name",
+									"value": "javier"
+								},
+								{
+									"key": "gender",
+									"value": "H"
+								},
+								{
+									"key": "date",
+									"value": "2000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "nombre y genero vacio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=javier&password=javier&first_name=&last_name=javier&gender=&date=2000-10-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "javier"
+								},
+								{
+									"key": "password",
+									"value": "javier"
+								},
+								{
+									"key": "first_name",
+									"value": ""
+								},
+								{
+									"key": "last_name",
+									"value": "javier"
+								},
+								{
+									"key": "gender",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": "2000-10-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contraseña menor a 6",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=javier&password=javi&first_name=javier&last_name=javier&gender=h&date=2000-10-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "javier"
+								},
+								{
+									"key": "password",
+									"value": "javi"
+								},
+								{
+									"key": "first_name",
+									"value": "javier"
+								},
+								{
+									"key": "last_name",
+									"value": "javier"
+								},
+								{
+									"key": "gender",
+									"value": "h"
+								},
+								{
+									"key": "date",
+									"value": "2000-10-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contraseña mayor a 12",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=javier&password=lacasademitiopepe&first_name=javier&last_name=javier&gender=h&date=2000-10-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "javier"
+								},
+								{
+									"key": "password",
+									"value": "lacasademitiopepe"
+								},
+								{
+									"key": "first_name",
+									"value": "javier"
+								},
+								{
+									"key": "last_name",
+									"value": "javier"
+								},
+								{
+									"key": "gender",
+									"value": "h"
+								},
+								{
+									"key": "date",
+									"value": "2000-10-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "peticion get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=javier&password=lacasademi&first_name=javier&last_name=javier&gender=h&date=2000-10-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "javier"
+								},
+								{
+									"key": "password",
+									"value": "lacasademi"
+								},
+								{
+									"key": "first_name",
+									"value": "javier"
+								},
+								{
+									"key": "last_name",
+									"value": "javier"
+								},
+								{
+									"key": "gender",
+									"value": "h"
+								},
+								{
+									"key": "date",
+									"value": "2000-10-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "campos vacios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=&password=&first_name=&last_name=&gender=&date=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": ""
+								},
+								{
+									"key": "password",
+									"value": ""
+								},
+								{
+									"key": "first_name",
+									"value": ""
+								},
+								{
+									"key": "last_name",
+									"value": ""
+								},
+								{
+									"key": "gender",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "campos nulos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MiTiendaGuzman/SignUp?username=null&password=null&first_name=null&last_name=null&gender=null&date=null",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MiTiendaGuzman",
+								"SignUp"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "null"
+								},
+								{
+									"key": "password",
+									"value": "null"
+								},
+								{
+									"key": "first_name",
+									"value": "null"
+								},
+								{
+									"key": "last_name",
+									"value": "null"
+								},
+								{
+									"key": "gender",
+									"value": "null"
+								},
+								{
+									"key": "date",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

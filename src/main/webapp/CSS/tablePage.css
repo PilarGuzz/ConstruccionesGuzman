@@ -21,21 +21,71 @@ body {
 	hr{
 		color:black;
 	}
+	.button {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    padding: 10px;
+    font-weight: 600;
+	font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+	.button:hover {
+    background-color: #555555;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+  }
 	
-	#addButton{
-	    text-decoration: none;
+	.addbutton{
+	    background-color: white;
+	    color: black;
+	    border: 2px solid #555555;
 	    padding: 10px;
 	    font-weight: 600;
-	    font-size: 20px;
-	    color: #ffffff;
-	    background-color: #333;
-	    border-radius: 6px;
-	    border: 2px solid #7e87c5;
+		font-size: 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	    margin: 4px 2px;
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    border-radius: 8px;
 	}
-	#addButton:hover{
-	    color: #222d7a;
-	    background-color: #ffffff;
+	.addbutton:hover{
+		background-color: #555555;
+	    color: white;
+	    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+	 
   	}
+  	   .button {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+.button:hover {
+    background-color: #555555;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+  }
 	
 	table{
 		margin: auto;
