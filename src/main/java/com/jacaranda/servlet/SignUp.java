@@ -71,18 +71,19 @@ public class SignUp extends HttpServlet {
 					+ "<html>" 
 					+ "<head>" 
 					+ "<meta charset=\"UTF-8\">"
-					+ "<title>Materiales</title>"
+					+ "<title>Error</title>"
 					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
-					+ "<body background=\"images/fondo2.jpg\">"
-					+ "<img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\">"
-					+ "<hr>" 
-					+ "<div id=\"izq\">" + "<img src=\"images/error.png\" id=\"iconoError\">" + "</div>"
+					+ "<body class=\"background\" background=\"images/error2.jpg\">"
+					+"<form method=\"post\" action=\"Login\">\n"
+					+ "	<p><button name=\"Back\" value=\"back\" type=\"submit\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </button></p>\n"
+					+ "	</form>	"
 					+ "<div id=\"der\">" 
 					+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
 					+ "<h3 id=\"TextoChico\">El usuario<br> ya existe</FONT></h3>"
 					+ "</div>" 
 					+ "</body>" 
 					+ "</html>");
+			
 		}
 		
 	}

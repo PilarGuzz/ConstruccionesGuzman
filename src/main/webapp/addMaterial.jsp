@@ -17,12 +17,12 @@
         <br>
         <hr>
     </div>
-    <div id="contenido">
+    <div id="contenido" class="grid-container">
 		<form action="AddMaterial" method="POST">
 		<h1>Añadir Material a la venta: </h1>
 					
 		<!-- POR HACER -->		
-		<fieldset style="width:fit-content" class="opacidad">
+		<fieldset class="opacidad fieldset">
 			<legend id="legends"><b>Rellene los siguientes datos: </b></legend>
 					Nombre: <input type="text" name="nameMaterial" min=1800 required><br>
 					<br>
@@ -42,13 +42,13 @@
 					Precio: <input type="number" step="any" id="" name="price" min=1 max=300 required><br>
 					<br>
 					
-					<input type="submit">
+					<input type="submit" class="button">
 					
 		
 		</fieldset>
 	</form>
 	<form method="post" action="Login">
-			<p><button name="Back" value="back" type="submit">Volver </button></p>
+			<p><button name="Back" value="back" type="submit" class="button">Volver </button></p>
 	
 	</form>				
 				

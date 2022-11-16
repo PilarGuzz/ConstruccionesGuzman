@@ -51,15 +51,16 @@ public class Login extends HttpServlet {
 			 name = (String) userSession.getAttribute("usuario");
 			 pass = (String) userSession.getAttribute("password");
 		}
-
-		if (LoginUtils.validate(name, pass)) {
+		if(name != null && pass != null) {
+			
+			if (LoginUtils.validate(name, pass)) {
 				
 				userSession.setAttribute("login", "True");
 				userSession.setAttribute("usuario", name);
 				userSession.setAttribute("password", pass);
-
-
- 
+				
+				
+				
 				try {
 					out.println("<!DOCTYPE html>" 
 							+ "<html>" 
@@ -74,7 +75,7 @@ public class Login extends HttpServlet {
 					if (user.isAdmin()) {
 						out.println("</div>" 
 								+ "<div id=\"botonadd\" align=\"right\">"
-						// POR HACER
+								// POR HACER
 								+ "<a href=\"addMaterial.jsp\" ><button name=\"addMaterial\" id=\"addButton\" value=\"addMaterial\">Añadir Material</button></a>"
 								+ "</div>" 
 								+ "<br>");
@@ -88,48 +89,71 @@ public class Login extends HttpServlet {
 							+ "<th>Price</th>" 
 							+ "<th>Category</th>" 
 							+ "</tr>");
-
+					
 					List<Material> listMaterial = null;
 					listMaterial = CRUDMaterial.getMaterials();
-
+					
 					for (Material material : listMaterial) {
-
+						
 						out.println("<tr>" 
 								+ "<td>" + material.getCode() + "</td>" 
 								+ "<td>" + material.getName() + "</td>" 
 								+ "<td>" + material.getDescription() + "</td>" 
 								+ "<td>" + material.getPrice() + "</td>" 
 								+ "<td>" + material.getCategory().getName() + "</td>");
-
+						
 					}
 					out.println("</table>" + "</div>" + "</body>" + "</html>");
-
+					
 				} catch (Exception e) {
 					out.close();
 				}
-
+				
 			} else {
 				// response.sendRedirect("index.jsp?msg_error=true");
 				out.println("<!DOCTYPE html>" 
 						+ "<html>" 
 						+ "<head>" 
 						+ "<meta charset=\"UTF-8\">"
-						+ "<title>Materiales</title>"
+						+ "<title>Error</title>"
 						+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
-						+ "<body background=\"images/fondo2.jpg\">"
-						+ "<a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"><a>"
-						+ "<hr>" 
-						+ "<div id=\"izq\">" + "<img src=\"images/error.png\" id=\"iconoError\">" + "</div>"
+						+ "<body class=\"background\" background=\"images/error2.jpg\">"
+						+"<form method=\"post\" action=\"Login\">\n"
+						+ "	<p><button name=\"Back\" value=\"back\" type=\"submit\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </button></p>\n"
+						+ "	</form>	"
 						+ "<div id=\"der\">" 
 						+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
 						+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
-						+ "<h7 id=\"msg\">Usuario o contraseña erronea</h7> <br>" 
-						+ "<h7 id=\"codError\">Codigo de error: 404</h7>" 
+						+ "<h7 id=\"msg\">Usuario o contraseña erroneos</h7> <br>" 
+					
 						+ "</div>" 
 						+ "</body>" 
 						+ "</html>");
-
+				
 			}
+		} else {
+		
+			out.println("<!DOCTYPE html>" 
+					+ "<html>" 
+					+ "<head>" 
+					+ "<meta charset=\"UTF-8\">"
+					+ "<title>Error</title>"
+					+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/TablePage.css\">" + "</head>"
+					+ "<body class=\"background\" background=\"images/error2.jpg\">"
+					+"<form method=\"post\" action=\"Login\">\n"
+					+ "	<p><button name=\"Back\" value=\"back\" type=\"submit\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </button></p>\n"
+					+ "	</form>	"
+					+ "<div id=\"der\">" 
+					+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
+					+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
+					+ "<h7 id=\"msg\">Usuario nulo, rellene los campos</h7> <br>" 
+				
+					+ "</div>" 
+					+ "</body>" 
+					+ "</html>");
+
+			
+		}
 
 		}
 

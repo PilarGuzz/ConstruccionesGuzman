@@ -3,6 +3,11 @@ body {
 		font: 14px/1.4 "Times New Roman", Times, serif; 
 	}
 	
+	.background{
+	background-repeat: no-repeat;
+  	background-size: 100% 100%;
+  	}
+	
 	#header{
 		padding: 1em;
 	}

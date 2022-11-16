@@ -1,72 +1,76 @@
 @charset "UTF-8";
 
-body{
-	background-color: transparent;
-	height:100vh;
-	font-family: 'Muli',sans-serif;
-	
-}
-#logo{
-	position: absolute;
-    top: 35%;
-    left: 53%;
-    margin: -126px;
+body {
+    background-color: transparent;
+    height: 100vh;
+    font-family: 'Muli', sans-serif;
+
 }
 
-#container{
-    display:table-cell;
-    width:100%;
-    height: 100%;
-    vertical-align:middle;
-    text-align:center;
-    
+.grid-container {
+    display: grid;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
 }
-.centroLogin{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -126px;
-    padding-bottom: 2%;
+
+.medio {
+    text-align: center;
+
+}
+
+.centroLogin {
+
     width: 280px;
     min-height: 250px;
     background-color: rgb(192, 192, 192);
     border-radius: 20px;
     border: inset;
     font-size: large;
-  
+
 }
-.signUp{
-	position: absolute;
+
+.register {
+    padding-bottom: 24px;
+}
+
+.signUp {
+    position: absolute;
     top: 50%;
-    left: 50%; 
+    left: 50%;
     margin: -126px;
     width: 250px;
     min-height: 250px;
     background-color: rgb(192, 192, 192);
-   
+
     border-radius: 20px;
-	
+
 }
-#textoUser{
+
+#textoUser {
     text-align: justify;
     padding-left: 1em;
 }
-#textoContrasena{
+
+#textoContrasena {
     text-align: justify;
     padding-left: 1em;
 }
-#user{
+
+#user {
     border: 2px solid grey;
-  border-radius: 10px;
-  background-image: url("images/user.png");
-  background-position: 185px 1px; 
-  background-repeat: no-repeat;
-  
-  
-}#password{
+    border-radius: 10px;
+    background-image: url("images/user.png");
+    background-position: 185px 1px;
+    background-repeat: no-repeat;
+
+
+}
+
+#password {
     border: 2px solid grey;
-  border-radius: 10px;
-  background-image: url("images/password.png");
-  background-position: 185px -1px; 
-  background-repeat: no-repeat;
+    border-radius: 10px;
+    background-image: url("images/password.png");
+    background-position: 185px -1px;
+    background-repeat: no-repeat;
 }
