@@ -1,5 +1,6 @@
 package com.jacaranda.models;
 
+import java.sql.Blob;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -21,6 +22,8 @@ public class Material {
 	private String name;
 	private String description;
 	private double price;
+	private Blob img;
+	private int stock;
 	@ManyToOne
 	@JoinColumn(name="category")
 	private Category category;
@@ -28,12 +31,13 @@ public class Material {
 	public Material() {
 		
 	}
-	public Material(String name, String description, double price, Category categoryName) {
+	public Material(String name, String description, double price, Category categoryName, int stock) {
 		
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.category = categoryName;
+		this.stock = stock;
 	}
 	public int getCode() {
 		return code;
@@ -64,6 +68,18 @@ public class Material {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	public Blob getImg() {
+		return img;
+	}
+	public void setImg(Blob img) {
+		this.img = img;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	@Override
 	public int hashCode() {

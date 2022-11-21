@@ -51,11 +51,13 @@ public class AddMaterial extends HttpServlet {
 		Double price = -1.0;
 		int code = -1;
 		Category category = null;
+		int stock = -1;
 		
 		try {
 			price = Double.valueOf(request.getParameter("price"));
 			code = Integer.valueOf(request.getParameter("cat"));
 			category = CRUDCategory.getCategory(code);
+			stock = Integer.valueOf(request.getParameter("stock"));
 			
 		}catch(Exception e) {
 			out.println(errorHTML("Campos inválidos"));
@@ -67,7 +69,7 @@ public class AddMaterial extends HttpServlet {
 			
 			if(CRUDMaterial.getMaterialByName(name)== null && price > 0  ) {
 				
-				Material mat = new Material(name, description, price, category);
+				Material mat = new Material(name, description, price, category, stock);
 				CRUDMaterial.saveMaterial(mat);
 				ServletContext context = this.getServletContext();
 				RequestDispatcher dispatcher = context.getRequestDispatcher("/Login");

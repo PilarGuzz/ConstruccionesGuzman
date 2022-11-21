@@ -41,6 +41,9 @@
 					<br>
 					Precio: <input type="number" step="any" id="" name="price" min=1 max=300 required><br>
 					<br>
+					<br>
+					Stock: <input type="number" id="" name="stock" min=1 max=300 required><br>
+					<br>
 					
 					<input type="submit" class="button">
 					

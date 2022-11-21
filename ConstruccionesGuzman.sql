@@ -65,7 +65,9 @@ CREATE TABLE `material` (
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
   `price` decimal(5,2) DEFAULT NULL,
-  `category` int(11) DEFAULT NULL
+  `category` int(11) DEFAULT NULL,
+  `stock` int(50) DEFAULT 50,
+  `img` longblob
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

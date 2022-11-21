@@ -29,7 +29,6 @@ public class Login extends HttpServlet {
 	 */
 	public Login() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -75,7 +74,6 @@ public class Login extends HttpServlet {
 					if (user.isAdmin()) {
 						out.println("</div>" 
 								+ "<div id=\"botonadd\" align=\"right\">"
-								// POR HACER
 								+ "<a href=\"addMaterial.jsp\" ><button class=\"addbutton\" name=\"addMaterial\" id=\"addButton\" value=\"addMaterial\">Añadir Material</button></a>"
 								+ "</div>" 
 								+ "<br>");
@@ -88,6 +86,9 @@ public class Login extends HttpServlet {
 							+ "<th>Description</th>" 
 							+ "<th>Price</th>" 
 							+ "<th>Category</th>" 
+							+ "<th>Imagen</th>" 
+							+ "<th>Stock</th>" 
+							+ "<th>Compra</th>" 
 							+ "</tr>");
 					
 					List<Material> listMaterial = null;
@@ -101,6 +102,14 @@ public class Login extends HttpServlet {
 								+ "<td>" + material.getDescription() + "</td>" 
 								+ "<td>" + material.getPrice() + "</td>" 
 								+ "<td>" + material.getCategory().getName() + "</td>");
+						if(material.getImg()!=null) {
+							
+							out.println("<td>" + material.getImg()+ "</td>");
+						}else {
+							out.println("<td> No img </td>");
+						}
+						out.println( "<td>" + material.getStock()+ "</td>"
+								+ "<td>Cantidad:<input type=\"number\" name = \"cantidad\"><br><br> <button>Añadir al carrito</button></td>");
 						
 					}
 					out.println("</table>" + "</div>" + "</body>" + "</html>");
@@ -110,7 +119,6 @@ public class Login extends HttpServlet {
 				}
 				
 			} else {
-				// response.sendRedirect("index.jsp?msg_error=true");
 				out.println(errorHTML("Usuario o contraseña erroneos"));
 					
 				
