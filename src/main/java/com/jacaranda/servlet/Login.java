@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jacaranda.models.CRUDMaterial;
+import com.jacaranda.models.Carrito;
 import com.jacaranda.models.LoginUtils;
 import com.jacaranda.models.Material;
 import com.jacaranda.models.User;
@@ -45,8 +46,13 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		Carrito carro = (Carrito) userSession.getAttribute("carrito");
+		if(carro == null) {
+			carro = new Carrito();
+			userSession.setAttribute("carrito", carro);
+		}
 		
-		if ((name == null && pass == null)) {
+		if (name == null && pass == null) {
 			 name = (String) userSession.getAttribute("usuario");
 			 pass = (String) userSession.getAttribute("password");
 		}
@@ -89,6 +95,7 @@ public class Login extends HttpServlet {
 							+ "<th>Imagen</th>" 
 							+ "<th>Stock</th>" 
 							+ "<th>Compra</th>" 
+							+ "<th>"+ carro.getArticulos().size() +"</th>" 
 							+ "</tr>");
 					
 					List<Material> listMaterial = null;
@@ -109,7 +116,10 @@ public class Login extends HttpServlet {
 							out.println("<td> No img </td>");
 						}
 						out.println( "<td>" + material.getStock()+ "</td>"
-								+ "<td>Cantidad:<input type=\"number\" name = \"cantidad\"><br><br> <button>Añadir al carrito</button></td>");
+								+ "<td><form action=\"addCarrito.jsp\" method=\"POST\">"
+								+ "Cantidad:<input type=\"number\" name = \"cantidad\" id=\"cantidad\"><br><br> "
+								+ "<button type=\"submit\" name=\"materialCode\" id=\"materialCode\" value="+ material.getCode() +"><img src=\"images/carrito.png\" width=\"30px\"></button>"
+								+ "</form></td>");
 						
 					}
 					out.println("</table>" + "</div>" + "</body>" + "</html>");

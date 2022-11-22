@@ -19,7 +19,7 @@ public class Ventas {
 			name="username",
 			insertable = false, updatable = false
 			)
-	private User user;
+	private User username;
 	
 	@Id
 	@ManyToOne
@@ -28,8 +28,10 @@ public class Ventas {
 			insertable = false, updatable = false
 			)
 	private Material material;
+	@Id
+	private LocalDate date;
 	private Double price;
-	private Integer quantity;
+	private int quantity;
 
 	public Ventas() {
 		

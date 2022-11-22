@@ -10,13 +10,13 @@ public class IdVentas implements Serializable {
 
 	private String username;
 	private LocalDate date;
-	private Integer idMaterial;
+	private int material;
 
-	public IdVentas(String username, LocalDate date, Integer idMaterial) {
+	public IdVentas(String username, LocalDate date, int material) {
 		super();
 		this.username = username;
 		this.date = date;
-		this.idMaterial = idMaterial;
+		this.material = material;
 	}
 	
 	public IdVentas() {
@@ -24,7 +24,7 @@ public class IdVentas implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, idMaterial, username);
+		return Objects.hash(date, material, username);
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class IdVentas implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		IdVentas other = (IdVentas) obj;
-		return Objects.equals(date, other.date) && Objects.equals(idMaterial, other.idMaterial)
+		return Objects.equals(date, other.date) && Objects.equals(material, other.material)
 				&& Objects.equals(username, other.username);
 	}
 }
