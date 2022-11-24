@@ -24,7 +24,7 @@
 	
 	
 	if(!carro.getArticulos().contains(itemCarro)){
-		carro.addMaterial(itemCarro);
+		carro.addItem(itemCarro);
 		
 	}
 	
@@ -32,9 +32,12 @@
 	RequestDispatcher dispatcher = context.getRequestDispatcher ("/Login");
 	dispatcher.forward(request, response);
 	
-
+ 
 
 %>
 
+<form method="POST" action="Login">
+<input type="submit">
+</form>
 </body>
 </html>

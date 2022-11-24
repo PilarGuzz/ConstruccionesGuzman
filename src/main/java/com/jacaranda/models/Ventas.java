@@ -1,6 +1,7 @@
 package com.jacaranda.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Ventas {
 			)
 	private Material material;
 	@Id
-	private LocalDate date;
+	private LocalDateTime date;
 	private Double price;
 	private int quantity;
 

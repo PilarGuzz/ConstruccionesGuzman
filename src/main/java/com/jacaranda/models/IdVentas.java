@@ -2,6 +2,7 @@ package com.jacaranda.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class IdVentas implements Serializable {
@@ -9,10 +10,10 @@ public class IdVentas implements Serializable {
 
 
 	private String username;
-	private LocalDate date;
+	private LocalDateTime date;
 	private int material;
 
-	public IdVentas(String username, LocalDate date, int material) {
+	public IdVentas(String username, LocalDateTime date, int material) {
 		super();
 		this.username = username;
 		this.date = date;

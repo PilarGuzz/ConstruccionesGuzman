@@ -38,6 +38,7 @@ public class Material {
 		this.price = price;
 		this.category = categoryName;
 		this.stock = stock;
+		this.img = null;
 	}
 	public int getCode() {
 		return code;
@@ -97,6 +98,11 @@ public class Material {
 		return Objects.equals(category, other.category) && code == other.code
 				&& Objects.equals(description, other.description) && Objects.equals(name, other.name)
 				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
+	}
+	@Override
+	public String toString() {
+		return "Material [code=" + code + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", img=" + img + ", stock=" + stock + ", category=" + category + "]";
 	}
 
 }
