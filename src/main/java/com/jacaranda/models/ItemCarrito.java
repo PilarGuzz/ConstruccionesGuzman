@@ -7,12 +7,12 @@ public class ItemCarrito {
 
 	private Material articulo;
 	private int cantidad;
-	private double totalPrice;
+	private double price;
 
 	public ItemCarrito(Material articulo, int cantidad) {
 		this.articulo = articulo;
 		this.cantidad = cantidad;
-		this.totalPrice = cantidad * articulo.getPrice();
+		this.price = articulo.getPrice();
 	}
 	
 
@@ -31,8 +31,12 @@ public class ItemCarrito {
 	public int getCantidad() {
 		return cantidad;
 	}
+	
+	public double getPrice() {
+		return price;
+	}
 	public double getTotalPrice() {
-		return totalPrice;
+		return price * cantidad;
 	}
 	
 	public void setCantidad(int cantidad) {
@@ -60,6 +64,6 @@ public class ItemCarrito {
 
 	@Override
 	public String toString() {
-		return "ItemCarrito [articulo=" + articulo + ", cantidad=" + cantidad + ", totalPrice=" + totalPrice + "]";
+		return "ItemCarrito [articulo=" + articulo + ", cantidad=" + cantidad + ", totalPrice=" + price + "]";
 	}
 }

@@ -76,6 +76,7 @@ public class Login extends HttpServlet {
 							+ "<body background=\"images/fondoBrick.jpg\">" + "<div id=\"header\"> </div>" 
 							+ "<a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"><a>"
 							+ "<a href=\"cart.jsp\"><img src=\"images/carrito.png\" width=\"30px\"></a>"
+							+"User: "+name
 							+ "<hr>");
 					User user = LoginUtils.getUser(name);
 					if (user.isAdmin()) {

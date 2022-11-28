@@ -10,9 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
-@Entity
+@Entity(name="purchase")
 @IdClass(IdVentas.class)
-public class Ventas {
+public class Purchase {
 	
 	@Id
 	@ManyToOne
@@ -34,7 +34,7 @@ public class Ventas {
 	private Double price;
 	private int quantity;
 
-	public Ventas() {
+	public Purchase() {
 		
 	}
 

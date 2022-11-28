@@ -1,5 +1,6 @@
 <%@page import="com.jacaranda.models.ItemCarrito"%>
 <%@page import="com.jacaranda.models.Carrito"%>
+<%@page import="java.lang.Math"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -43,8 +44,15 @@ Double price=0.0;
 								<td><%=item.getArticulo().getName() %></td>
 								<td><%=item.getArticulo().getCategory().getName() %></td>
 								<td><%=item.getArticulo().getDescription() %></td>
-								<td><%=item.getCantidad() %></td>
-								<td><%=item.getTotalPrice() %></td> 
+								<td><%=item.getCantidad() %>
+								
+									<form action="updateQuantity.jsp" method="POST">
+									<input type="number" name = "cantidad" id="cantidad" min=0>
+									<input type="hidden" value=<%=item.getArticulo().getCode()%> name="materialId">
+									<button type="submit" name="modificar" id="modificar" value="modificar">Modificar Cantidad</button>
+									</form>
+								</td>
+								<td><%= Math.floor(item.getTotalPrice() * 100)/100 %></td> 
 								<td><%if(item.getArticulo().getImg()== null){%>
 									<img src="images/noIMG.jpg" width="80px" height="80px">
 									<%}else{%>
@@ -56,7 +64,11 @@ Double price=0.0;
 			<%}%>
 			<tr>
 				<td colspan="6">PRECIO TOTAL</td>
-				<td><%=price %></td>
+				<td><%=Math.floor(price* 100)/100 %>
+					<form>
+						<button type="submit">Comprar</button>
+					</form>
+				</td>
 			</tr>
 			</table>
 </body>
