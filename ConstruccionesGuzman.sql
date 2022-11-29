@@ -204,12 +204,15 @@ INSERT INTO `user` (`username`, `pass`, `first_name`, `last_name`, `birthday`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user_material`
+-- Estructura de tabla para la tabla `purchase`
 --
 
-CREATE TABLE `user_material` (
-  `userName` varchar(20) NOT NULL,
-  `idMaterial` int(6) NOT NULL
+CREATE TABLE `purchase` (
+  `username` varchar(50) NOT NULL,
+  `materialCode` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -238,11 +241,11 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indices de la tabla `user_material`
+-- Indices de la tabla `purchase`
 --
-ALTER TABLE `user_material`
-  ADD PRIMARY KEY (`idMaterial`,`userName`),
-  ADD KEY `fk2_userMaterial` (`userName`);
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`username`,`materialCode`,`date`),
+  ADD KEY `materialCode` (`materialCode`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -258,7 +261,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- Restricciones para tablas volcadas
@@ -271,11 +274,11 @@ ALTER TABLE `material`
   ADD CONSTRAINT `fk_cat` FOREIGN KEY (`category`) REFERENCES `category` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `user_material`
+-- Filtros para la tabla `purchase`
 --
-ALTER TABLE `user_material`
-  ADD CONSTRAINT `fk2_userMaterial` FOREIGN KEY (`userName`) REFERENCES `user` (`username`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_userMaterial` FOREIGN KEY (`idMaterial`) REFERENCES `material` (`id`) ON DELETE CASCADE;
+ALTER TABLE `purchase`
+  ADD CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`materialCode`) REFERENCES `material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

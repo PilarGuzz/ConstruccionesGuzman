@@ -25,17 +25,13 @@ import com.jacaranda.models.User;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	
 	public Login() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession userSession = request.getSession();
@@ -73,15 +69,26 @@ public class Login extends HttpServlet {
 							+ "<meta charset=\"UTF-8\">"
 							+ "<title>Materiales</title>"
 							+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/tablePage.css\">" + "</head>"
-							+ "<body background=\"images/fondoBrick.jpg\">" + "<div id=\"header\"> </div>" 
-							+ "<a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"><a>"
-							+ "<a href=\"cart.jsp\"><img src=\"images/carrito.png\" width=\"30px\"></a>"
-							+"User: "+name
-							+ "<hr>");
+							+ "<body background=\"images/fondoBrick.jpg\">"
+							
+							+ "<div id=\"header\">" 
+							+ "<div class=\"logo\"><a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a>"
+							+ "</div>"
+							+ "<div class=\"name\"><img src=\"images/name.png\" width=\"100%\"></div>"
+							+ "<div class=\"sesion\">"
+							+ "<a href=\"index.jsp\"><button  name=\"close\" value=\"close\" class=\"button close\">Cerrar Sesion</button><a>"
+							+ " User: " + name
+							+ "<a href=\"cart.jsp\"><img class=\"carro\" src=\"images/carro.png\" width=\"60px\"></a>"
+							+ "Articulos: "+ carro.getArticulos().size()
+										
+
+							+ "</div></div> <hr>"
+							+ "<div id=\"botonadd\" align=\"right\" style=\" padding-right: 1em;\">"
+							+ "<a href=\"lastPurchase.jsp\"><button name=\"history\" value=\"history\" class=\"button\" >Mis compras </button></a></div>");
 					User user = LoginUtils.getUser(name);
 					if (user.isAdmin()) {
 						out.println("</div>" 
-								+ "<div id=\"botonadd\" align=\"right\">"
+								+ "<div id=\"botonadd\" align=\"right\" style=\" padding-right: 1em;\">"
 								+ "<a href=\"addMaterial.jsp\" ><button class=\"addbutton\" name=\"addMaterial\" id=\"addButton\" value=\"addMaterial\">Añadir Material</button></a>"
 								+ "</div>" 
 								+ "<br>");
@@ -97,7 +104,6 @@ public class Login extends HttpServlet {
 							+ "<th>Imagen</th>" 
 							+ "<th>Stock</th>" 
 							+ "<th>Compra</th>" 
-							+ "<th>"+ carro.getArticulos().size() +"</th>" 
 							+ "</tr>");
 					
 					List<Material> listMaterial = null;
@@ -111,17 +117,28 @@ public class Login extends HttpServlet {
 								+ "<td>" + material.getDescription() + "</td>" 
 								+ "<td>" + material.getPrice() + "</td>" 
 								+ "<td>" + material.getCategory().getName() + "</td>");
+						/*
+						 * Si la imagen es nula, se mostrara una por defecto
+						 */
 						if(material.getImg()!=null) {
 							
 							out.println("<td>" + material.getImg()+ "</td>");
 						}else {
 							out.println("<td><img src=\"images/noIMG.jpg\" width=\"80px\" height=\"80px\"></td>");
 						}
-						out.println( "<td>" + material.getStock()+ "</td>"
-								+ "<td><form action=\"addCarrito.jsp\" method=\"POST\">"
-								+ "Cantidad:<input type=\"number\" name = \"cantidad\" id=\"cantidad\"><br><br> "
-								+ "<button type=\"submit\" name=\"materialCode\" id=\"materialCode\" value="+ material.getCode() +"><img src=\"images/carrito.png\" width=\"30px\"></button>"
-								+ "</form></td>");
+						/*
+						 * Si el stock es 0 mostrará el mensaje de Sin stock
+						 */
+						out.println("<td>" + material.getStock()+ "</td>");
+						if(material.getStock()==0) {
+							out.println("<td>" +"Sin Stock"+ "</td>");
+						}else {
+							out.println("<td><form action=\"addCarrito.jsp\" method=\"POST\">"
+									+ "Cantidad:<input type=\"number\" name = \"cantidad\" id=\"cantidad\" min=1 max="+material.getStock()+" required ><br><br> "
+									+ "<button type=\"submit\" name=\"materialCode\" id=\"materialCode\" value="+ material.getCode() +"><img src=\"images/carrito.png\" width=\"30px\"></button>"
+									+ "</form></td>");	
+						}
+						
 						
 					}
 					out.println("</table>" + "</div>" + "</body>" + "</html>");
@@ -158,7 +175,7 @@ public class Login extends HttpServlet {
 				+ "<title>Error</title>"
 				+ "<link rel=\"stylesheet\" type=\"text/CSS\" href=\"CSS/styleError.css\">" + "</head>"
 				+ "<body class=\"background\" background=\"images/error2.jpg\">"
-				+ "	<p><a href=\"index\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </a></p>\n"
+				+ "	<p><a href=\"index.jsp\"><img src=\"images/logo2.png\" width=\"140px\" height=\"100px\" id=\"logo\"> </a></p>\n"
 				+ "<div id=\"der\">" 
 				+ "<h1 id=\"TextoGrande\">¡Vaya!</h1>"
 				+ "<h3 id=\"TextoChico\">No hemos podido encontrar<br> la pagina que buscas.</FONT></h3>"
